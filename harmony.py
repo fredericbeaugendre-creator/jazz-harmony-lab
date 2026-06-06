@@ -69,6 +69,26 @@ MINOR_TONIC_QUALITIES = {"m7", "m9", "m6", "m"}
 MINOR_PRE_DOMINANT_QUALITIES = {"m7b5"}
 MAJOR_PRE_DOMINANT_QUALITIES = {"m7", "m9"}
 
+MAJOR_KEY_DEGREES = {
+    0: "I",
+    2: "ii",
+    4: "iii",
+    5: "IV",
+    7: "V",
+    9: "vi",
+    11: "vii",
+}
+
+MINOR_KEY_DEGREES = {
+    0: "i",
+    2: "ii",
+    3: "III",
+    5: "iv",
+    7: "v",
+    8: "VI",
+    10: "VII",
+}
+
 
 def read_grid(filename):
     bars = []
@@ -317,7 +337,98 @@ def scale_notes_for_suggestion(suggestion):
     return scale_notes(root, scale)
 
 
+def chord_positions(bars):
+    positions = []
+
+    for bar_index, bar in enumerate(bars):
+        for chord_index, chord in enumerate(bar):
+            positions.append({
+                "bar": bar_index + 1,
+                "chord": chord_index + 1,
+            })
+
+    return positions
+
+
+def movement_range(start, length, positions):
+    selected = positions[start:start + length]
+
+    if not selected:
+        return "unknown"
+
+    first = selected[0]
+    last = selected[-1]
+
+    if first["bar"] == last["bar"]:
+        return f"bar {first['bar']}"
+
+    return f"bars {first['bar']}-{last['bar']}"
+
+
+def make_movement(
+    movement_type,
+    chords,
+    start,
+    positions,
+    label,
+    explanation,
+    target=None,
+    key=None,
+):
+    return {
+        "type": movement_type,
+        "label": label,
+        "chords": chords,
+        "start": start,
+        "range": movement_range(start, len(chords), positions),
+        "target": target,
+        "key": key,
+        "explanation": explanation,
+    }
+
+
+def target_label(root, target):
+    interval = interval_between(root, chord_root(target))
+    degree = MAJOR_KEY_DEGREES.get(interval)
+
+    if is_minor_tonic(target) and degree:
+        return degree.lower()
+
+    return degree
+
+
+def movement_scales(movement):
+    scales = []
+
+    for chord in movement["chords"]:
+        suggestions = suggested_scales(chord)
+
+        if suggestions:
+            scales.append(f"{chord}: {', '.join(suggestions)}")
+
+    return scales
+
+
+def movement_guide_tones(movement):
+    lines = []
+
+    for chord in movement["chords"]:
+        lines.append(f"{chord}: {format_notes(important_tones(chord))}")
+
+    for first, second in zip(movement["chords"], movement["chords"][1:]):
+        if is_dominant(first):
+            lines.append(
+                f"{first} -> {second}: resolve the dominant 7th downward and aim the 3rd into a stable tone of {second}."
+            )
+
+    return lines
+
+
 def detect_ii_v_i(chords):
+    return detect_ii_v_i_with_positions(chords, chord_positions([[chord] for chord in chords]))
+
+
+def detect_ii_v_i_with_positions(chords, positions):
     movements = []
 
     # These patterns are intentionally small: root motion by fourth/fifth plus broad chord quality.
@@ -339,28 +450,36 @@ def detect_ii_v_i(chords):
             chord_quality(first) in MAJOR_PRE_DOMINANT_QUALITIES
             and is_major_tonic(third)
         ):
-            movements.append({
-                "type": "II-V-I major",
-                "chords": [first, second, third],
-                "start": index,
-                "key": third_root,
-            })
+            movements.append(make_movement(
+                "II-V-I major",
+                [first, second, third],
+                index,
+                positions,
+                "Major II-V-I",
+                "Classic predominant-dominant-tonic motion in a major key.",
+                target=third,
+                key=third_root,
+            ))
 
         if (
             chord_quality(first) in MINOR_PRE_DOMINANT_QUALITIES
             and is_minor_tonic(third)
         ):
-            movements.append({
-                "type": "II-V-I minor",
-                "chords": [first, second, third],
-                "start": index,
-                "key": third_root,
-            })
+            movements.append(make_movement(
+                "II-V-I minor",
+                [first, second, third],
+                index,
+                positions,
+                "Minor II-V-I",
+                "Half-diminished ii and altered/phrygian dominant colors resolve into a minor tonic.",
+                target=third,
+                key=third_root,
+            ))
 
     return movements
 
 
-def detect_secondary_dominants(chords):
+def detect_isolated_dominant_resolutions(chords, positions):
     movements = []
 
     for index, chord in enumerate(chords[:-1]):
@@ -369,38 +488,348 @@ def detect_secondary_dominants(chords):
         if not is_dominant(chord):
             continue
 
-        if interval_between(chord_root(chord), chord_root(next_chord)) == 5:
-            movements.append({
-                "type": "secondary dominant",
-                "chords": [chord, next_chord],
-                "start": index,
-                "target": next_chord,
-            })
+        if interval_between(chord_root(chord), chord_root(next_chord)) != 5:
+            continue
+
+        movements.append(make_movement(
+            "isolated dominant resolution",
+            [chord, next_chord],
+            index,
+            positions,
+            "V-I resolution",
+            "A dominant chord resolves by fifth to its target, even without a preceding ii chord.",
+            target=next_chord,
+            key=chord_root(next_chord),
+        ))
 
     return movements
 
 
-def detect_tritone_substitutions(chords):
+def detect_secondary_dominants(chords, positions=None):
+    if positions is None:
+        positions = chord_positions([[chord] for chord in chords])
+
     movements = []
 
-    for index, chord in enumerate(chords):
-        if is_dominant(chord):
-            substitute = f"{transpose_note(chord_root(chord), 6)}7"
-            movements.append({
-                "type": "tritone substitution candidate",
-                "chords": [chord],
-                "start": index,
-                "substitute": substitute,
-            })
+    for index, chord in enumerate(chords[:-1]):
+        next_chord = chords[index + 1]
+
+        if not is_dominant(chord):
+            continue
+
+        if interval_between(chord_root(chord), chord_root(next_chord)) != 5:
+            continue
+
+        degree = target_label("C", next_chord)
+
+        if not degree or degree == "I":
+            continue
+
+        label = f"V/{degree}"
+        explanation = f"{chord} tonicizes {next_chord}; in C as a reference key this functions like {label}."
+        movements.append(make_movement(
+            "secondary dominant",
+            [chord, next_chord],
+            index,
+            positions,
+            label,
+            explanation,
+            target=next_chord,
+        ))
 
     return movements
 
 
-def detect_harmonic_movements(chords):
-    return (
-        detect_ii_v_i(chords)
-        + detect_secondary_dominants(chords)
-        + detect_tritone_substitutions(chords)
+def detect_tritone_substitutions(chords, positions=None):
+    if positions is None:
+        positions = chord_positions([[chord] for chord in chords])
+
+    movements = []
+
+    for index, chord in enumerate(chords[:-1]):
+        next_chord = chords[index + 1]
+
+        if not is_dominant(chord):
+            continue
+
+        if interval_between(chord_root(chord), chord_root(next_chord)) != 11:
+            continue
+
+        original_dominant = f"{transpose_note(chord_root(chord), 6)}7"
+        movements.append(make_movement(
+            "tritone substitution candidate",
+            [chord, next_chord],
+            index,
+            positions,
+            f"tritone substitute for {original_dominant}",
+            f"{chord} resolves down by half step to {next_chord}, a common tritone-sub dominant sound.",
+            target=next_chord,
+            key=chord_root(next_chord),
+        ))
+
+    return movements
+
+
+def detect_backdoor_resolutions(chords, positions):
+    movements = []
+
+    for index in range(len(chords) - 2):
+        first, second, third = chords[index:index + 3]
+
+        if (
+            chord_quality(first) in MAJOR_PRE_DOMINANT_QUALITIES
+            and is_dominant(second)
+            and is_major_tonic(third)
+            and interval_between(chord_root(third), chord_root(first)) == 5
+            and interval_between(chord_root(third), chord_root(second)) == 10
+        ):
+            movements.append(make_movement(
+                "backdoor II-V",
+                [first, second, third],
+                index,
+                positions,
+                "Backdoor ii-V-I",
+                "Minor iv moving to bVII7 gives a softer dominant path into the major tonic.",
+                target=third,
+                key=chord_root(third),
+            ))
+
+    for index, chord in enumerate(chords[:-1]):
+        next_chord = chords[index + 1]
+
+        if (
+            is_dominant(chord)
+            and is_major_tonic(next_chord)
+            and interval_between(chord_root(next_chord), chord_root(chord)) == 10
+        ):
+            movements.append(make_movement(
+                "backdoor dominant",
+                [chord, next_chord],
+                index,
+                positions,
+                "Backdoor bVII7-I",
+                "The bVII dominant resolves to a major tonic without the usual V-I root motion.",
+                target=next_chord,
+                key=chord_root(next_chord),
+            ))
+
+    return movements
+
+
+def detect_diminished_passing_chords(chords, positions):
+    movements = []
+
+    for index in range(len(chords) - 2):
+        first, second, third = chords[index:index + 3]
+
+        if chord_quality(second) != "dim7":
+            continue
+
+        first_to_dim = interval_between(chord_root(first), chord_root(second))
+        dim_to_third = interval_between(chord_root(second), chord_root(third))
+
+        if first_to_dim == 1 and dim_to_third in {1, 2}:
+            movements.append(make_movement(
+                "diminished passing chord",
+                [first, second, third],
+                index,
+                positions,
+                "Chromatic diminished passing chord",
+                f"{second} connects {first} to {third} with chromatic voice-leading tension.",
+                target=third,
+            ))
+
+    return movements
+
+
+def detect_turnarounds(chords, positions):
+    movements = []
+
+    for index in range(len(chords) - 3):
+        first, second, third, fourth = chords[index:index + 4]
+        key_root = chord_root(first)
+
+        if not is_major_tonic(first):
+            continue
+
+        roots_match = (
+            interval_between(key_root, chord_root(second)) == 9
+            and interval_between(key_root, chord_root(third)) == 2
+            and interval_between(key_root, chord_root(fourth)) == 7
+        )
+
+        if not roots_match:
+            continue
+
+        if chord_quality(second) in MINOR_TONIC_QUALITIES and chord_quality(third) in MAJOR_PRE_DOMINANT_QUALITIES and is_dominant(fourth):
+            label = "I-vi-ii-V turnaround"
+            explanation = "A diatonic turnaround that cycles from tonic through vi, ii, and V."
+        elif is_dominant(second) and chord_quality(third) in MAJOR_PRE_DOMINANT_QUALITIES and is_dominant(fourth):
+            label = "I-VI7-ii-V turnaround"
+            explanation = "A jazz turnaround with a secondary dominant on VI pushing into ii-V."
+        else:
+            continue
+
+        movements.append(make_movement(
+            "turnaround",
+            [first, second, third, fourth],
+            index,
+            positions,
+            label,
+            explanation,
+            target=first,
+            key=key_root,
+        ))
+
+    return movements
+
+
+def detect_static_harmony(bars, positions):
+    movements = []
+    flat_index = 0
+
+    for run in consecutive_chord_runs(bars):
+        count = run["count"]
+
+        if count >= 2:
+            chord = run["chord"]
+            movements.append(make_movement(
+                "static harmony",
+                [chord] * count,
+                flat_index,
+                positions,
+                "Static harmony / repeated vamp",
+                f"{chord} repeats for {count} consecutive {run['unit']}; treat it as a sustained color or vamp.",
+                target=chord,
+            ))
+
+        flat_index += count
+
+    return movements
+
+
+def movement_span(movement):
+    return movement["start"], movement["start"] + len(movement["chords"])
+
+
+def detect_modal_or_nonfunctional(chords, positions, existing_movements):
+    covered = set()
+
+    for movement in existing_movements:
+        start, end = movement_span(movement)
+        covered.update(range(start, end))
+
+    movements = []
+    index = 0
+
+    while index < len(chords):
+        if index in covered:
+            index += 1
+            continue
+
+        start = index
+
+        while index < len(chords) and index not in covered:
+            index += 1
+
+        section = chords[start:index]
+
+        if section:
+            movements.append(make_movement(
+                "modal or non-functional section",
+                section,
+                start,
+                positions,
+                "Modal/static/non-functional color",
+                "No clear functional rule fired here; use the chord-scale suggestions as a practical modal or color-based map.",
+                target=section[-1],
+            ))
+
+    return movements
+
+
+def dedupe_movements(movements):
+    seen = set()
+    unique = []
+
+    for movement in movements:
+        key = (movement["type"], movement["start"], tuple(movement["chords"]), movement["label"])
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        unique.append(movement)
+
+    return unique
+
+
+def is_inside_longer_functional_movement(movement, longer_movements):
+    start, end = movement_span(movement)
+
+    for longer in longer_movements:
+        longer_start, longer_end = movement_span(longer)
+
+        if longer_start <= start and end <= longer_end:
+            return True
+
+    return False
+
+
+def detect_harmonic_movements(chords, bars=None):
+    if bars is None:
+        bars = [[chord] for chord in chords]
+
+    positions = chord_positions(bars)
+    movements = []
+    ii_v_i_movements = detect_ii_v_i_with_positions(chords, positions)
+    turnaround_movements = detect_turnarounds(chords, positions)
+    backdoor_candidates = detect_backdoor_resolutions(chords, positions)
+    backdoor_ii_v_movements = [
+        movement for movement in backdoor_candidates
+        if movement["type"] == "backdoor II-V"
+    ]
+    backdoor_movements = [
+        movement for movement in backdoor_candidates
+        if (
+            movement["type"] != "backdoor dominant"
+            or not is_inside_longer_functional_movement(movement, backdoor_ii_v_movements)
+        )
+    ]
+    diminished_movements = detect_diminished_passing_chords(chords, positions)
+    longer_movements = (
+        ii_v_i_movements
+        + turnaround_movements
+        + backdoor_movements
+        + diminished_movements
+    )
+    movements.extend(ii_v_i_movements)
+    movements.extend(turnaround_movements)
+    movements.extend(backdoor_movements)
+    movements.extend(diminished_movements)
+
+    secondary_movements = []
+
+    for movement in detect_secondary_dominants(chords, positions):
+        if not is_inside_longer_functional_movement(movement, longer_movements):
+            movements.append(movement)
+            secondary_movements.append(movement)
+
+    for movement in detect_isolated_dominant_resolutions(chords, positions):
+        inside_longer = is_inside_longer_functional_movement(movement, longer_movements)
+        inside_secondary = is_inside_longer_functional_movement(movement, secondary_movements)
+
+        if not inside_longer and not inside_secondary:
+            movements.append(movement)
+
+    movements.extend(detect_tritone_substitutions(chords, positions))
+    movements.extend(detect_static_harmony(bars, positions))
+    movements = dedupe_movements(movements)
+    movements.extend(detect_modal_or_nonfunctional(chords, positions, movements))
+
+    return sorted(
+        dedupe_movements(movements),
+        key=lambda movement: (movement["start"], -len(movement["chords"]), movement["type"]),
     )
 
 
@@ -574,9 +1003,80 @@ def markdown_option(option, key_root, key_type):
     return lines
 
 
+def movement_group_title(movement_type):
+    titles = {
+        "II-V-I major": "Major II-V-I",
+        "II-V-I minor": "Minor II-V-I",
+        "isolated dominant resolution": "Isolated Dominant Resolutions",
+        "secondary dominant": "Secondary Dominants",
+        "tritone substitution candidate": "Tritone Substitution Candidates",
+        "backdoor II-V": "Backdoor II-V",
+        "backdoor dominant": "Backdoor Dominants",
+        "diminished passing chord": "Diminished Passing Chords",
+        "turnaround": "Turnarounds",
+        "static harmony": "Static Harmony / Vamps",
+        "modal or non-functional section": "Modal or Non-Functional Sections",
+    }
+
+    return titles.get(movement_type, movement_type.title())
+
+
+def movement_target_text(movement):
+    if movement.get("key"):
+        return f"Likely key/target: {movement['key']}"
+
+    if movement.get("target"):
+        return f"Likely target: {movement['target']}"
+
+    return "Likely key/target: unclear"
+
+
+def markdown_movement(movement):
+    lines = [
+        f"- **{movement['label']}** ({movement['range']})",
+        f"  - Chords: {' -> '.join(movement['chords'])}",
+        f"  - {movement_target_text(movement)}",
+        f"  - Explanation: {movement['explanation']}",
+    ]
+    scales = movement_scales(movement)
+    guide_tones = movement_guide_tones(movement)
+
+    if scales:
+        lines.append(f"  - Scale choices: {'; '.join(scales)}")
+
+    if guide_tones:
+        lines.append(f"  - Guide tones/resolution: {'; '.join(guide_tones)}")
+
+    return lines
+
+
+def markdown_detected_movements(movements):
+    if not movements:
+        return ["No common movements detected yet."]
+
+    lines = []
+    grouped = {}
+
+    for movement in movements:
+        grouped.setdefault(movement["type"], []).append(movement)
+
+    for movement_type, group in grouped.items():
+        lines.extend([
+            f"### {movement_group_title(movement_type)}",
+            "",
+        ])
+
+        for movement in group:
+            lines.extend(markdown_movement(movement))
+
+        lines.append("")
+
+    return lines
+
+
 def generate_markdown_report(bars, original_grid=None):
     chords = flatten_grid(bars)
-    movements = detect_harmonic_movements(chords)
+    movements = detect_harmonic_movements(chords, bars)
     ii_v_i_movements = [
         movement for movement in movements
         if movement["type"] in {"II-V-I major", "II-V-I minor"}
@@ -608,29 +1108,15 @@ def generate_markdown_report(bars, original_grid=None):
 
     lines.extend([
         "",
-        "## 3. Detected harmonic movements",
+        "## Detected harmonic movements",
         "",
     ])
 
-    if movements:
-        for movement in movements:
-            chord_text = " -> ".join(movement["chords"])
-            details = ""
-
-            if "key" in movement:
-                details = f" in {movement['key']}"
-            if "target" in movement:
-                details = f" resolving to {movement['target']}"
-            if "substitute" in movement:
-                details = f": try {movement['substitute']}"
-
-            lines.append(f"- {movement['type']}: {chord_text}{details}")
-    else:
-        lines.append("- No common movements detected yet.")
+    lines.extend(markdown_detected_movements(movements))
 
     lines.extend([
         "",
-        "## 4. Harmonic options for detected II-V-I movements",
+        "## Harmonic options for detected II-V-I movements",
         "",
     ])
 

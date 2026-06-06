@@ -3,19 +3,23 @@
 ## Scale
 
 - Notes: A, B, C, D, E, Gb, G, A
-- Chord context: Am7
+- Chord context: Am7, Am7, Am7, Am7
 - Important tones: R: A, 3: C, 5: E, 7: G
 
 ### Common tones with previous scales
 
-- Bb Lydian dominant: C, D, E, G
-- E altered: C, D, E, G
-- E half-whole diminished: B, D, E, G
-- E phrygian dominant: A, B, C, D, E
+- A Lydian dominant: A, B, E, Gb, G
+- A Mixolydian: A, B, D, E, Gb, G
+- Eb Lydian dominant: A, C, G
+- Eb Mixolydian: C, G
 
 ### Common tones with next scales
 
-No neighboring scale context found.
+- Ab Lydian dominant: C, D, Gb
+- D Lydian dominant: A, B, C, D, E, Gb
+- D Mixolydian: A, B, C, D, E, Gb, G
+- D altered: C, D, Gb
+- D half-whole diminished: A, B, C, D, Gb
 
 ## Resolution ideas
 

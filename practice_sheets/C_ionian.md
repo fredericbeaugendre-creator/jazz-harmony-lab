@@ -3,11 +3,13 @@
 ## Scale
 
 - Notes: C, D, E, F, G, A, B, C
-- Chord context: Cmaj7
+- Chord context: Cmaj7, Cmaj7, Cmaj7, Cmaj7
 - Important tones: 7: B, R: C, 3: E, 5: G
 
 ### Common tones with previous scales
 
+- C Ionian: C, D, E, F, G, A, B
+- C Lydian: C, D, E, G, A, B
 - Db Lydian dominant: F, G, B
 - G Lydian dominant: D, E, F, G, A, B
 - G Mixolydian: C, D, E, F, G, A, B
@@ -16,8 +18,10 @@
 
 ### Common tones with next scales
 
-- F Ionian: C, D, E, F, G, A
-- F Lydian: C, D, E, F, G, A, B
+- C Aeolian: C, D, F, G
+- C Dorian: C, D, F, G, A
+- C Ionian: C, D, E, F, G, A, B
+- C Lydian: C, D, E, G, A, B
 
 ## Resolution ideas
 

@@ -3,12 +3,15 @@
 ## Scale
 
 - Notes: D, E, F, G, A, Bb, C, D
-- Chord context: Dm7
+- Chord context: Dm7, Dm7
 - Important tones: 5: A, 7: C, R: D, 3: F
 
 ### Common tones with previous scales
 
-No neighboring scale context found.
+- D Lydian dominant: D, E, A, C
+- D Mixolydian: D, E, G, A, C
+- G Ionian: D, E, G, A, C
+- G Lydian: D, E, G, A
 
 ### Common tones with next scales
 

@@ -26,6 +26,9 @@ ROLE_COLORS = {
 
 ORDINARY_SCALE_FILL = "#e0f2fe"
 ORDINARY_SCALE_STROKE = "#0284c7"
+INACTIVE_WHITE_KEY_FILL = "#dbeafe"
+ACTIVE_BLACK_KEY_FILL = "#1e3a5f"
+INACTIVE_BLACK_KEY_FILL = "#111827"
 
 
 def svg_escape(text):
@@ -171,7 +174,7 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
         x = left + index * white_width
         active = note in scale_notes
         role = note_roles.get(note, "o")
-        fill = "#dbeafe" if active else "#ffffff"
+        fill = "#ffffff" if active else INACTIVE_WHITE_KEY_FILL
         stroke = "#2563eb" if active else "#94a3b8"
 
         elements.append(
@@ -209,22 +212,32 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
             x = offset + (white_index + 1) * white_width - black_width / 2
             active = note in scale_notes
             role = note_roles.get(note, "o")
-            fill = "#475569" if active and role == "o" else role_color(role)
 
-            if not active:
-                fill = "#111827"
-
-            stroke = "#0f172a"
-
+            fill = ACTIVE_BLACK_KEY_FILL if active else INACTIVE_BLACK_KEY_FILL
             elements.append(
-                f'<rect x="{x}" y="{top}" width="{black_width}" height="{black_height}" rx="4" fill="{fill}" stroke="{stroke}" stroke-width="1"/>'
+                f'<rect x="{x}" y="{top}" width="{black_width}" height="{black_height}" rx="4" fill="{fill}" stroke="#0f172a" stroke-width="1"/>'
             )
 
             if active:
-                label = note if role == "o" else role
-                elements.append(
-                    f'<text x="{x + black_width / 2}" y="{top + black_height - 16}" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#ffffff">{svg_escape(label)}</text>'
-                )
+                cx = x + black_width / 2
+
+                if role == "o":
+                    diamond_points = [
+                        (cx, top + black_height - 54),
+                        (cx + 8, top + black_height - 44),
+                        (cx, top + black_height - 34),
+                        (cx - 8, top + black_height - 44),
+                    ]
+                    points = " ".join(f"{x},{y}" for x, y in diamond_points)
+                    elements.extend([
+                        f'<polygon points="{points}" fill="{ORDINARY_SCALE_FILL}" stroke="{ORDINARY_SCALE_STROKE}" stroke-width="1.2"/>',
+                        f'<text x="{cx}" y="{top + black_height - 14}" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#bae6fd">{svg_escape(note)}</text>',
+                    ])
+                else:
+                    elements.extend([
+                        f'<circle cx="{cx}" cy="{top + black_height - 44}" r="14" fill="{role_color(role)}" stroke="#f8fafc" stroke-width="1.2"/>',
+                        f'<text x="{cx}" y="{top + black_height - 40}" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#ffffff">{svg_escape(role)}</text>',
+                    ])
 
     fingering = "-".join(piano_fingering(scale_notes + [root]))
     elements.extend([

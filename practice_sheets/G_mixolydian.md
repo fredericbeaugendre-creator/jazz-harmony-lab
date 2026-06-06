@@ -3,7 +3,7 @@
 ## Scale
 
 - Notes: G, A, B, C, D, E, F, G
-- Chord context: G7
+- Chord context: G7, G7
 - Important tones: 3: B, 5: D, 7: F, R: G
 
 ### Common tones with previous scales
