@@ -9,7 +9,8 @@ A small Python tool to analyse jazz chord progressions.
 - Display chord tones
 - Suggest scales or modes for each chord
 - Find common tones between consecutive chords
-- Detect simple jazz progressions such as II-V-I
+- Detect simple jazz progressions such as II-V-I, secondary dominants, and tritone substitution candidates
+- Generate a Markdown analysis report
 - Help with composition and improvisation
 
 ## Supported chord symbols
@@ -20,8 +21,10 @@ maj7, m7, 7, m7b5, dim7, 6, m6, 9, m9, 13, 7b9, 7#9
 
 Write a grid in `grid.txt`:
 
-| Fmaj7 | D7b9 | Gm9 C13 | F6 |
-| Bm7b5 E7#9 | Am6 | Cdim7 |
+```text
+| Dm7 G7 | Cmaj7 |
+| Fmaj7 | Bm7b5 E7b9 | Am7 |
+```
 
 Run:
 
@@ -29,19 +32,19 @@ Run:
 python3 main.py
 ```
 
-Output:
+The program writes `analysis.md` with:
 
-Fmaj7 -> F A C E  
-D7b9 -> D Gb A C Eb  
-Gm9 -> G Bb D F A  
+- The original grid
+- Parsed chords by bar
+- Chord tones and suggested scales
+- Detected harmonic movements
+- Harmonic options for detected II-V-I movements
 
-Suggested scales:
+It also writes separate scale practice sheets in `practice_sheets/`, including:
 
-Fmaj7 -> F Ionian, F Lydian  
-D7b9 -> D half-whole diminished, D altered, D phrygian dominant  
-
-Common tones:
-
-Fmaj7 to Gm7: F  
-Gm7 to C7: G, Bb  
-C7 to Fmaj7: C, E
+- Scale notes and chord context
+- Important target tones
+- Common tones with nearby scales
+- Simple resolution ideas
+- Text guitar fretboard diagrams
+- Piano notes and suggested right-hand fingering
