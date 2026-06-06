@@ -1,5 +1,5 @@
-from harmony import analyse_progression
+from harmony import analyse_progression, read_grid
 
-progression = ["Fmaj7", "Gm7", "C7", "Fmaj7", "Dm7", "G7", "Cmaj7"]
+progression = read_grid("grid.txt")
 
 analyse_progression(progression)
