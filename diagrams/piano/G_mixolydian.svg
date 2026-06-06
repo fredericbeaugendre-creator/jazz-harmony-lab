@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="812" height="340" viewBox="0 0 812 340">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="42" y="34" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">G Mixolydian - Piano</text>
+<text x="42" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Highlighted notes belong to the scale. Important tones use labels.</text>
+<rect x="42" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="68.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">C</text>
+<circle cx="68.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="68.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">C</text>
+<rect x="94" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="120.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">D</text>
+<circle cx="120.0" cy="220" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1"/>
+<text x="120.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">5</text>
+<rect x="146" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="172.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">E</text>
+<circle cx="172.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="172.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">E</text>
+<rect x="198" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="224.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">F</text>
+<circle cx="224.0" cy="220" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1"/>
+<text x="224.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">7</text>
+<rect x="250" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="276.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">G</text>
+<circle cx="276.0" cy="220" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1"/>
+<text x="276.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">R</text>
+<rect x="302" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="328.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">A</text>
+<circle cx="328.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="328.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">A</text>
+<rect x="354" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="380.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">B</text>
+<circle cx="380.0" cy="220" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+<text x="380.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">3</text>
+<rect x="406" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="432.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">C</text>
+<circle cx="432.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="432.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">C</text>
+<rect x="458" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="484.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">D</text>
+<circle cx="484.0" cy="220" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1"/>
+<text x="484.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">5</text>
+<rect x="510" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="536.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">E</text>
+<circle cx="536.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="536.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">E</text>
+<rect x="562" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="588.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">F</text>
+<circle cx="588.0" cy="220" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1"/>
+<text x="588.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">7</text>
+<rect x="614" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="640.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">G</text>
+<circle cx="640.0" cy="220" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1"/>
+<text x="640.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">R</text>
+<rect x="666" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="692.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">A</text>
+<circle cx="692.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+<text x="692.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">A</text>
+<rect x="718" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="744.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">B</text>
+<circle cx="744.0" cy="220" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+<text x="744.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">3</text>
+<rect x="77.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="129.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="233.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="285.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="337.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="441.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="493.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="597.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="649.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<rect x="701.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
+<text x="42" y="304" font-family="Arial, sans-serif" font-size="13" fill="#334155">Suggested RH fingering: 1-2-3-1-2-3-4-5. Treat this as a starting point.</text>
+</svg>

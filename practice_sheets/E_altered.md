@@ -21,21 +21,17 @@
 - Aim altered color tones by half step into stable tones on the next chord.
 - Resolve #9/b9 colors by half step into stable chord tones on the tonic.
 
+## Diagrams
+
 ### Guitar fretboard
 
-Frets 0-12. `R`, `3`, `5`, `7`, `9`, `b9`, `#9`, `#11`, and `b13` mark target tones when available; `o` marks another scale tone.
+![Guitar fretboard](../diagrams/guitar/E_altered.svg)
 
-```text
-         0   1   2   3   4   5   6   7   8   9  10  11  12
- E |   R  b9   .  #9   3   .   o   . b13   .   7   .   R
- B |   . b13   .   7   .   R  b9   .  #9   3   .   o   .
- G |  #9   3   .   o   . b13   .   7   .   R  b9   .  #9
- D |   7   .   R  b9   .  #9   3   .   o   . b13   .   7
- A |   .   o   . b13   .   7   .   R  b9   .  #9   3   .
- E |   R  b9   .  #9   3   .   o   . b13   .   7   .   R
-```
+### Piano keyboard
 
-### Piano view
+![Piano keyboard](../diagrams/piano/E_altered.svg)
+
+## Piano notes
 
 - Scale notes: E, F, G, Ab, Bb, C, D, E
 - Suggested RH fingering: 1-2-3-1-2-3-4-5

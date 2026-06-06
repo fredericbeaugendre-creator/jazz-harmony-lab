@@ -21,21 +21,17 @@
 - Keep guide tones clear: the dominant 7th resolves down, and the dominant 3rd resolves toward the tonic.
 - Treat b9 as a strong pull into the minor tonic sound.
 
+## Diagrams
+
 ### Guitar fretboard
 
-Frets 0-12. `R`, `3`, `5`, `7`, `9`, `b9`, `#9`, `#11`, and `b13` mark target tones when available; `o` marks another scale tone.
+![Guitar fretboard](../diagrams/guitar/E_phrygian_dominant.svg)
 
-```text
-         0   1   2   3   4   5   6   7   8   9  10  11  12
- E |   R  b9   .   .   3   o   .   5   o   .   7   .   R
- B |   5   o   .   7   .   R  b9   .   .   3   o   .   5
- G |   .   3   o   .   5   o   .   7   .   R  b9   .   .
- D |   7   .   R  b9   .   .   3   o   .   5   o   .   7
- A |   o   .   5   o   .   7   .   R  b9   .   .   3   o
- E |   R  b9   .   .   3   o   .   5   o   .   7   .   R
-```
+### Piano keyboard
 
-### Piano view
+![Piano keyboard](../diagrams/piano/E_phrygian_dominant.svg)
+
+## Piano notes
 
 - Scale notes: E, F, Ab, A, B, C, D, E
 - Suggested RH fingering: 1-2-3-1-2-3-4-5

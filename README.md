@@ -46,5 +46,6 @@ It also writes separate scale practice sheets in `practice_sheets/`, including:
 - Important target tones
 - Common tones with nearby scales
 - Simple resolution ideas
-- Text guitar fretboard diagrams
+- SVG guitar fretboard diagrams in `diagrams/guitar/`
+- SVG piano keyboard diagrams in `diagrams/piano/`
 - Piano notes and suggested right-hand fingering

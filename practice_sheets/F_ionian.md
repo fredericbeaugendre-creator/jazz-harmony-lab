@@ -20,21 +20,17 @@
 
 - Use 3rds and 7ths as landing tones, then connect neighboring scale notes melodically.
 
+## Diagrams
+
 ### Guitar fretboard
 
-Frets 0-12. `R`, `3`, `5`, `7`, `9`, `b9`, `#9`, `#11`, and `b13` mark target tones when available; `o` marks another scale tone.
+![Guitar fretboard](../diagrams/guitar/F_ionian.svg)
 
-```text
-         0   1   2   3   4   5   6   7   8   9  10  11  12
- E |   7   R   .   o   .   3   o   .   5   .   o   .   7
- B |   .   5   .   o   .   7   R   .   o   .   3   o   .
- G |   o   .   3   o   .   5   .   o   .   7   R   .   o
- D |   o   .   7   R   .   o   .   3   o   .   5   .   o
- A |   3   o   .   5   .   o   .   7   R   .   o   .   3
- E |   7   R   .   o   .   3   o   .   5   .   o   .   7
-```
+### Piano keyboard
 
-### Piano view
+![Piano keyboard](../diagrams/piano/F_ionian.svg)
+
+## Piano notes
 
 - Scale notes: F, G, A, Bb, C, D, E, F
 - Suggested RH fingering: 1-2-3-1-2-3-4-5

@@ -1,7 +1,7 @@
 import os
 import re
 
-from instruments import guitar_fretboard, piano_view
+from instruments import diagram_markdown, piano_view, write_guitar_svg, write_piano_svg
 
 NOTES = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"]
 
@@ -623,6 +623,10 @@ def scale_filename(suggestion):
     return f"{root}_{clean_scale}.md"
 
 
+def scale_file_stem(suggestion):
+    return scale_filename(suggestion).replace(".md", "")
+
+
 def resolution_idea_for_scale(suggestion, chord):
     _, scale = parse_scale_suggestion(suggestion)
 
@@ -729,7 +733,7 @@ def common_scale_lines(label, suggestion, related_scales):
     return lines
 
 
-def markdown_practice_sheet(context):
+def markdown_practice_sheet(context, guitar_path=None, piano_path=None):
     suggestion = context["suggestion"]
     root, scale = parse_scale_suggestion(suggestion)
     notes = scale_notes(root, scale)
@@ -772,7 +776,10 @@ def markdown_practice_sheet(context):
         lines.append(f"- {idea}")
 
     lines.append("")
-    lines.extend(guitar_fretboard(root, notes, note_roles, transpose_note))
+
+    if guitar_path and piano_path:
+        lines.extend(diagram_markdown(guitar_path, piano_path))
+
     lines.extend(piano_view(notes_with_octave, target_tones))
 
     return "\n".join(lines).rstrip() + "\n"
@@ -780,13 +787,27 @@ def markdown_practice_sheet(context):
 
 def write_practice_sheets(bars, folder):
     os.makedirs(folder, exist_ok=True)
+    os.makedirs("diagrams/guitar", exist_ok=True)
+    os.makedirs("diagrams/piano", exist_ok=True)
     contexts = collect_practice_contexts(bars)
 
     for suggestion, context in contexts.items():
+        root, scale = parse_scale_suggestion(suggestion)
+        notes = scale_notes(root, scale)
+        note_roles = dict(context["roles"])
+        note_roles.update(scale_tone_map(root, scale))
+        stem = scale_file_stem(suggestion)
+        guitar_svg_path = os.path.join("diagrams", "guitar", f"{stem}.svg")
+        piano_svg_path = os.path.join("diagrams", "piano", f"{stem}.svg")
+        guitar_link = os.path.join("..", guitar_svg_path)
+        piano_link = os.path.join("..", piano_svg_path)
         filename = os.path.join(folder, scale_filename(suggestion))
 
+        write_guitar_svg(guitar_svg_path, root, scale, notes, note_roles, transpose_note)
+        write_piano_svg(piano_svg_path, root, scale, notes, note_roles)
+
         with open(filename, "w") as sheet:
-            sheet.write(markdown_practice_sheet(context))
+            sheet.write(markdown_practice_sheet(context, guitar_link, piano_link))
 
     return sorted(scale_filename(suggestion) for suggestion in contexts)
 

@@ -18,21 +18,17 @@
 
 - Resolve #9/b9 colors by half step into stable chord tones on the tonic.
 
+## Diagrams
+
 ### Guitar fretboard
 
-Frets 0-12. `R`, `3`, `5`, `7`, `9`, `b9`, `#9`, `#11`, and `b13` mark target tones when available; `o` marks another scale tone.
+![Guitar fretboard](../diagrams/guitar/G_altered.svg)
 
-```text
-         0   1   2   3   4   5   6   7   8   9  10  11  12
- E |   .   7   .   R  b9   .  #9   3   .   o   . b13   .
- B |   3   .   o   . b13   .   7   .   R  b9   .  #9   3
- G |   R  b9   .  #9   3   .   o   . b13   .   7   .   R
- D |   . b13   .   7   .   R  b9   .  #9   3   .   o   .
- A |   .  #9   3   .   o   . b13   .   7   .   R  b9   .
- E |   .   7   .   R  b9   .  #9   3   .   o   . b13   .
-```
+### Piano keyboard
 
-### Piano view
+![Piano keyboard](../diagrams/piano/G_altered.svg)
+
+## Piano notes
 
 - Scale notes: G, Ab, Bb, B, Db, Eb, F, G
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
