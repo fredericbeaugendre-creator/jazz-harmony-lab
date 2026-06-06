@@ -24,6 +24,9 @@ ROLE_COLORS = {
     "o": "#f8fafc",
 }
 
+ORDINARY_SCALE_FILL = "#e0f2fe"
+ORDINARY_SCALE_STROKE = "#0284c7"
+
 
 def svg_escape(text):
     return (
@@ -161,7 +164,7 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
         f'<text x="{left}" y="34" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">{svg_escape(title)}</text>',
-        f'<text x="{left}" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Highlighted notes belong to the scale. Important tones use labels.</text>',
+        f'<text x="{left}" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Only scale tones are marked. Large circles are target tones; small diamonds are other scale tones.</text>',
     ]
 
     for index, note in enumerate(white_notes):
@@ -179,11 +182,25 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
         )
 
         if active:
-            label = role if role != "o" else note
-            elements.extend([
-                f'<circle cx="{x + white_width / 2}" cy="{top + white_height - 54}" r="15" fill="{role_color(role)}" stroke="#0f172a" stroke-width="1"/>',
-                f'<text x="{x + white_width / 2}" y="{top + white_height - 50}" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">{svg_escape(label)}</text>',
-            ])
+            cx = x + white_width / 2
+
+            if role == "o":
+                diamond_points = [
+                    (cx, top + white_height - 64),
+                    (cx + 8, top + white_height - 54),
+                    (cx, top + white_height - 44),
+                    (cx - 8, top + white_height - 54),
+                ]
+                points = " ".join(f"{x},{y}" for x, y in diamond_points)
+                elements.extend([
+                    f'<polygon points="{points}" fill="{ORDINARY_SCALE_FILL}" stroke="{ORDINARY_SCALE_STROKE}" stroke-width="1.2"/>',
+                    f'<text x="{cx}" y="{top + white_height - 34}" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">{note}</text>',
+                ])
+            else:
+                elements.extend([
+                    f'<circle cx="{cx}" cy="{top + white_height - 54}" r="15" fill="{role_color(role)}" stroke="#0f172a" stroke-width="1"/>',
+                    f'<text x="{cx}" y="{top + white_height - 50}" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">{svg_escape(role)}</text>',
+                ])
 
     for octave in range(2):
         offset = left + octave * white_width * 7
@@ -204,14 +221,19 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
             )
 
             if active:
-                label = role if role != "o" else note
+                label = note if role == "o" else role
                 elements.append(
                     f'<text x="{x + black_width / 2}" y="{top + black_height - 16}" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#ffffff">{svg_escape(label)}</text>'
                 )
 
     fingering = "-".join(piano_fingering(scale_notes + [root]))
     elements.extend([
-        f'<text x="{left}" y="{height - 36}" font-family="Arial, sans-serif" font-size="13" fill="#334155">Suggested RH fingering: {svg_escape(fingering)}. Treat this as a starting point.</text>',
+        f'<circle cx="{left + 10}" cy="{height - 58}" r="10" fill="{role_color("R")}" stroke="#0f172a" stroke-width="1"/>',
+        f'<text x="{left + 10}" y="{height - 54}" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">R</text>',
+        f'<text x="{left + 26}" y="{height - 54}" font-family="Arial, sans-serif" font-size="11" fill="#475569">important tone</text>',
+        f'<polygon points="{left + 156},{height - 68} {left + 164},{height - 58} {left + 156},{height - 48} {left + 148},{height - 58}" fill="{ORDINARY_SCALE_FILL}" stroke="{ORDINARY_SCALE_STROKE}" stroke-width="1.2"/>',
+        f'<text x="{left + 176}" y="{height - 54}" font-family="Arial, sans-serif" font-size="11" fill="#475569">other scale tone</text>',
+        f'<text x="{left}" y="{height - 22}" font-family="Arial, sans-serif" font-size="13" fill="#334155">Suggested RH fingering: {svg_escape(fingering)}. Treat this as a starting point.</text>',
         "</svg>",
     ])
     return "\n".join(elements) + "\n"

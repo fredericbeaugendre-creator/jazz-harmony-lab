@@ -1,21 +1,13 @@
 # Jazz Harmony Analysis
 
-## 1. Original grid
+## 1. Chart grid
 
 ```text
-| Dm7 G7 | Cmaj7 |
-| Fmaj7 | Bm7b5 E7b9 | Am7 |
+| Dm7 G7 | Cmaj7 | Fmaj7 | Bm7b5 E7b9 |
+| Am7 |
 ```
 
-## 2. Parsed chords by bar
-
-- Bar 1: Dm7, G7
-- Bar 2: Cmaj7
-- Bar 3: Fmaj7
-- Bar 4: Bm7b5, E7b9
-- Bar 5: Am7
-
-## 3. Chord tones for each chord
+## 2. Chord tones for each chord
 
 - **Dm7**
   - Function: minor seventh color
@@ -53,7 +45,7 @@
   - Suggested scales: A Dorian, A Aeolian
   - Important tones: 3rd: C, 7th: G
 
-## 4. Detected harmonic movements
+## 3. Detected harmonic movements
 
 - II-V-I major: Dm7 -> G7 -> Cmaj7 in C
 - II-V-I minor: Bm7b5 -> E7b9 -> Am7 in A
@@ -62,7 +54,7 @@
 - tritone substitution candidate: G7: try Db7
 - tritone substitution candidate: E7b9: try Bb7
 
-## 5. Harmonic options for detected II-V-I movements
+## 4. Harmonic options for detected II-V-I movements
 
 ### II-V-I major in C: Dm7 -> G7 -> Cmaj7
 

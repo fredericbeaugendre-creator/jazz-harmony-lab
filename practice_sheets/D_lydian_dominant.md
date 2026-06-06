@@ -1,0 +1,42 @@
+# D Lydian dominant Practice Sheet
+
+## Scale
+
+- Notes: D, E, Gb, Ab, A, B, C, D
+- Chord context: D7, D7, D7, D7
+- Important tones: 5: A, #11: Ab, 7: C, R: D, 3: Gb
+
+### Common tones with previous scales
+
+- A Aeolian: D, E, A, B, C
+- A Dorian: D, E, Gb, A, B, C
+
+### Common tones with next scales
+
+- D Aeolian: D, E, A, C
+- D Dorian: D, E, A, B, C
+- G Ionian: D, E, Gb, A, B, C
+- G Lydian: D, E, Gb, A, B
+- Gb Locrian: D, E, Gb, A, B, C
+- Gb Locrian natural 2: D, E, Gb, Ab, A, B, C
+
+## Resolution ideas
+
+- Lean on #11 color, then resolve the dominant guide tones smoothly.
+
+## Diagrams
+
+### Guitar fretboard
+
+![Guitar fretboard](../diagrams/guitar/D_lydian_dominant.svg)
+
+### Piano keyboard
+
+![Piano keyboard](../diagrams/piano/D_lydian_dominant.svg)
+
+## Piano notes
+
+- Scale notes: D, E, Gb, Ab, A, B, C, D
+- Suggested RH fingering: 1-2-3-1-2-3-4-5
+- Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
+- Target tones: 5: A, #11: Ab, 7: C, R: D, 3: Gb

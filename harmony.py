@@ -467,6 +467,52 @@ def format_grid(bars):
     return "\n".join(f"| {' '.join(bar)} |" for bar in bars)
 
 
+def format_chart_grid(bars, bars_per_line=4):
+    lines = []
+
+    for start in range(0, len(bars), bars_per_line):
+        row = bars[start:start + bars_per_line]
+        lines.append("| " + " | ".join(" ".join(bar) for bar in row) + " |")
+
+    return "\n".join(lines)
+
+
+def consecutive_chord_runs(bars):
+    runs = []
+
+    for bar_index, bar in enumerate(bars):
+        for chord in bar:
+            occurrence = {
+                "bar_index": bar_index,
+                "bar_size": len(bar),
+            }
+
+            if runs and runs[-1]["chord"] == chord:
+                runs[-1]["occurrences"].append(occurrence)
+                continue
+
+            runs.append({
+                "chord": chord,
+                "occurrences": [occurrence],
+            })
+
+    for run in runs:
+        run["count"] = len(run["occurrences"])
+
+        one_chord_per_bar = all(
+            occurrence["bar_size"] == 1
+            for occurrence in run["occurrences"]
+        )
+        unique_bars = len({
+            occurrence["bar_index"]
+            for occurrence in run["occurrences"]
+        }) == run["count"]
+
+        run["unit"] = "bars" if one_chord_per_bar and unique_bars else "appearances"
+
+    return runs
+
+
 def markdown_chord_summary(chord):
     scales = suggested_scales(chord)
 
@@ -538,31 +584,31 @@ def generate_markdown_report(bars, original_grid=None):
     lines = [
         "# Jazz Harmony Analysis",
         "",
-        "## 1. Original grid",
+        "## 1. Chart grid",
         "",
         "```text",
-        original_grid.strip() if original_grid else format_grid(bars),
+        format_chart_grid(bars),
         "```",
         "",
-        "## 2. Parsed chords by bar",
+        "## 2. Chord tones for each chord",
         "",
     ]
 
-    for index, bar in enumerate(bars, start=1):
-        lines.append(f"- Bar {index}: {', '.join(bar)}")
+    for run in consecutive_chord_runs(bars):
+        chord = run["chord"]
 
-    lines.extend([
-        "",
-        "## 3. Chord tones for each chord",
-        "",
-    ])
+        if run["count"] > 1:
+            lines.append(
+                f"- **{chord}** - repeated for {run['count']} consecutive {run['unit']}"
+            )
+            lines.extend(markdown_chord_summary(chord)[1:])
+            continue
 
-    for chord in chords:
         lines.extend(markdown_chord_summary(chord))
 
     lines.extend([
         "",
-        "## 4. Detected harmonic movements",
+        "## 3. Detected harmonic movements",
         "",
     ])
 
@@ -584,7 +630,7 @@ def generate_markdown_report(bars, original_grid=None):
 
     lines.extend([
         "",
-        "## 5. Harmonic options for detected II-V-I movements",
+        "## 4. Harmonic options for detected II-V-I movements",
         "",
     ])
 

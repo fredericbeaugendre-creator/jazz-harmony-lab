@@ -32,6 +32,16 @@ Run:
 python3 main.py
 ```
 
+To import a MusicXML chord chart instead:
+
+```bash
+python3 main.py --musicxml examples/song.musicxml
+```
+
+MusicXML import currently extracts `<harmony>` chord symbols measure by measure.
+This is the first importer path for iReal Pro workflows, because iReal Pro can export chord charts as MusicXML.
+Direct `irealb://` URL parsing is planned but not implemented yet.
+
 The program writes `analysis.md` with:
 
 - The original grid

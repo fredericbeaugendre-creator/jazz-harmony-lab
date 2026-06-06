@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="812" height="340" viewBox="0 0 812 340">
 <rect width="100%" height="100%" fill="#f8fafc"/>
 <text x="42" y="34" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">F Lydian - Piano</text>
-<text x="42" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Highlighted notes belong to the scale. Important tones use labels.</text>
+<text x="42" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Only scale tones are marked. Large circles are target tones; small diamonds are other scale tones.</text>
 <rect x="42" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="68.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">C</text>
 <circle cx="68.0" cy="220" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1"/>
 <text x="68.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">5</text>
 <rect x="94" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="120.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">D</text>
-<circle cx="120.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-<text x="120.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">D</text>
+<polygon points="120.0,210 128.0,220 120.0,230 112.0,220" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+<text x="120.0" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">D</text>
 <rect x="146" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="172.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">E</text>
 <circle cx="172.0" cy="220" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1"/>
@@ -20,8 +20,8 @@
 <text x="224.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">R</text>
 <rect x="250" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="276.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">G</text>
-<circle cx="276.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-<text x="276.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">G</text>
+<polygon points="276.0,210 284.0,220 276.0,230 268.0,220" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+<text x="276.0" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">G</text>
 <rect x="302" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="328.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">A</text>
 <circle cx="328.0" cy="220" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
@@ -36,8 +36,8 @@
 <text x="432.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">5</text>
 <rect x="458" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="484.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">D</text>
-<circle cx="484.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-<text x="484.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">D</text>
+<polygon points="484.0,210 492.0,220 484.0,230 476.0,220" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+<text x="484.0" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">D</text>
 <rect x="510" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="536.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">E</text>
 <circle cx="536.0" cy="220" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1"/>
@@ -48,8 +48,8 @@
 <text x="588.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">R</text>
 <rect x="614" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="640.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">G</text>
-<circle cx="640.0" cy="220" r="15" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-<text x="640.0" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">G</text>
+<polygon points="640.0,210 648.0,220 640.0,230 632.0,220" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+<text x="640.0" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">G</text>
 <rect x="666" y="84" width="52" height="190" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
 <text x="692.0" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#334155">A</text>
 <circle cx="692.0" cy="220" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
@@ -68,5 +68,10 @@
 <rect x="597.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
 <rect x="649.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
 <rect x="701.0" y="84" width="34" height="116" rx="4" fill="#111827" stroke="#0f172a" stroke-width="1"/>
-<text x="42" y="304" font-family="Arial, sans-serif" font-size="13" fill="#334155">Suggested RH fingering: 1-2-3-1-2-3-4-5. Treat this as a starting point.</text>
+<circle cx="52" cy="282" r="10" fill="#2563eb" stroke="#0f172a" stroke-width="1"/>
+<text x="52" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">R</text>
+<text x="68" y="286" font-family="Arial, sans-serif" font-size="11" fill="#475569">important tone</text>
+<polygon points="198,272 206,282 198,292 190,282" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+<text x="218" y="286" font-family="Arial, sans-serif" font-size="11" fill="#475569">other scale tone</text>
+<text x="42" y="318" font-family="Arial, sans-serif" font-size="13" fill="#334155">Suggested RH fingering: 1-2-3-1-2-3-4-5. Treat this as a starting point.</text>
 </svg>
