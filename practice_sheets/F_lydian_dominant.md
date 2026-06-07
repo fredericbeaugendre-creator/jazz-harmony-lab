@@ -10,7 +10,7 @@
 
 - C Aeolian: F, G, C, D, Eb
 - C Dorian: F, G, A, C, D, Eb
-- Gb Locrian: G, A, B, C, D
+- F# Locrian: G, A, B, C, D
 
 ### Common tones with next scales
 

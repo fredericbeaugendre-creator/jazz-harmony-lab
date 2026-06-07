@@ -2,23 +2,23 @@
 
 ## Scale
 
-- Notes: D, E, Gb, Ab, A, B, C, D
+- Notes: D, E, F#, G#, A, B, C, D
 - Chord context: D7, D7, D7, D7
-- Important tones: 5: A, #11: Ab, 7: C, R: D, 3: Gb
+- Important tones: 5: A, 7: C, R: D, 3: F#, #11: G#
 
 ### Common tones with previous scales
 
 - A Aeolian: D, E, A, B, C
-- A Dorian: D, E, Gb, A, B, C
+- A Dorian: D, E, F#, A, B, C
 
 ### Common tones with next scales
 
 - D Aeolian: D, E, A, C
 - D Dorian: D, E, A, B, C
-- G Ionian: D, E, Gb, A, B, C
-- G Lydian: D, E, Gb, A, B
-- Gb Locrian: D, E, Gb, A, B, C
-- Gb Locrian natural 2: D, E, Gb, Ab, A, B, C
+- F# Locrian: D, E, F#, A, B, C
+- F# Locrian natural 2: D, E, F#, G#, A, B, C
+- G Ionian: D, E, F#, A, B, C
+- G Lydian: D, E, F#, A, B
 
 ## Resolution ideas
 
@@ -46,7 +46,7 @@
 
 ## Piano notes
 
-- Scale notes: D, E, Gb, Ab, A, B, C, D
+- Scale notes: D, E, F#, G#, A, B, C, D
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
-- Target tones: 5: A, #11: Ab, 7: C, R: D, 3: Gb
+- Target tones: 5: A, 7: C, R: D, 3: F#, #11: G#

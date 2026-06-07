@@ -1,6 +1,7 @@
 import os
 import re
 
+from importers import read_grid_file
 from instruments import (
     diagram_markdown,
     piano_view,
@@ -11,45 +12,93 @@ from instruments import (
 )
 
 NOTES = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"]
+SHARP_NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+FLAT_NOTES = NOTES
+NATURAL_NOTE_PITCH_CLASSES = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
+LETTER_NAMES = ["C", "D", "E", "F", "G", "A", "B"]
 
-ENHARMONIC = {
-    "C#": "Db",
-    "D#": "Eb",
-    "F#": "Gb",
-    "G#": "Ab",
-    "A#": "Bb",
+ACCIDENTAL_OFFSETS = {
+    "bb": -2,
+    "b": -1,
+    "": 0,
+    "#": 1,
+    "##": 2,
 }
 
 CHORD_INTERVALS = {
     "maj7": [0, 4, 7, 11],
+    "maj9": [0, 4, 7, 11, 14],
+    "maj13": [0, 4, 7, 11, 14, 21],
     "m7": [0, 3, 7, 10],
+    "mMaj7": [0, 3, 7, 11],
     "7": [0, 4, 7, 10],
+    "7sus4": [0, 5, 7, 10],
     "m7b5": [0, 3, 6, 10],
     "dim7": [0, 3, 6, 9],
     "6": [0, 4, 7, 9],
     "m6": [0, 3, 7, 9],
+    "add9": [0, 4, 7, 14],
     "9": [0, 4, 7, 10, 14],
     "m9": [0, 3, 7, 10, 14],
     "13": [0, 4, 7, 10, 14, 21],
     "7b9": [0, 4, 7, 10, 13],
     "7#9": [0, 4, 7, 10, 15],
+    "7#11": [0, 4, 7, 10, 18],
+    "7b13": [0, 4, 7, 10, 20],
+    "alt": [0, 4, 10, 13, 15, 18, 20],
+    "sus4": [0, 5, 7],
     "m": [0, 3, 7],
     "": [0, 4, 7],
 }
 
+CHORD_DEGREES = {
+    "maj7": [1, 3, 5, 7],
+    "maj9": [1, 3, 5, 7, 9],
+    "maj13": [1, 3, 5, 7, 9, 13],
+    "m7": [1, 3, 5, 7],
+    "mMaj7": [1, 3, 5, 7],
+    "7": [1, 3, 5, 7],
+    "7sus4": [1, 4, 5, 7],
+    "m7b5": [1, 3, 5, 7],
+    "dim7": [1, 3, 5, 7],
+    "6": [1, 3, 5, 6],
+    "m6": [1, 3, 5, 6],
+    "add9": [1, 3, 5, 9],
+    "9": [1, 3, 5, 7, 9],
+    "m9": [1, 3, 5, 7, 9],
+    "13": [1, 3, 5, 7, 9, 13],
+    "7b9": [1, 3, 5, 7, 9],
+    "7#9": [1, 3, 5, 7, 9],
+    "7#11": [1, 3, 5, 7, 11],
+    "7b13": [1, 3, 5, 7, 13],
+    "alt": [1, 3, 7, 9, 9, 11, 13],
+    "sus4": [1, 4, 5],
+    "m": [1, 3, 5],
+    "": [1, 3, 5],
+}
+
 SCALE_SUGGESTIONS = {
     "maj7": ["Ionian", "Lydian"],
+    "maj9": ["Ionian", "Lydian"],
+    "maj13": ["Ionian", "Lydian"],
     "m7": ["Dorian", "Aeolian"],
+    "mMaj7": ["melodic minor"],
     "7": ["Mixolydian", "Lydian dominant"],
+    "7sus4": ["Mixolydian"],
     "m7b5": ["Locrian", "Locrian natural 2"],
     "dim7": ["whole-half diminished"],
     "6": ["Ionian", "Lydian"],
     "m6": ["melodic minor", "Dorian"],
+    "add9": ["Ionian", "Lydian"],
     "9": ["Mixolydian", "Lydian dominant"],
     "m9": ["Dorian", "Aeolian"],
     "13": ["Mixolydian", "Lydian dominant"],
     "7b9": ["half-whole diminished", "altered", "phrygian dominant"],
     "7#9": ["altered", "half-whole diminished"],
+    "7#11": ["Lydian dominant"],
+    "7b13": ["altered", "Mixolydian b13"],
+    "alt": ["altered"],
+    "sus4": ["Mixolydian"],
     "m": ["Dorian", "Aeolian"],
     "": ["Ionian"],
 }
@@ -68,11 +117,34 @@ SCALE_INTERVALS = {
     "Locrian": [0, 1, 3, 5, 6, 8, 10],
     "Locrian natural 2": [0, 2, 3, 5, 6, 8, 10],
     "melodic minor": [0, 2, 3, 5, 7, 9, 11],
+    "Mixolydian b13": [0, 2, 4, 5, 7, 8, 10],
 }
 
-DOMINANT_QUALITIES = {"7", "9", "13", "7b9", "7#9"}
-MAJOR_TONIC_QUALITIES = {"maj7", "6", ""}
-MINOR_TONIC_QUALITIES = {"m7", "m9", "m6", "m"}
+SCALE_DEGREES = {
+    "Ionian": [1, 2, 3, 4, 5, 6, 7],
+    "Lydian": [1, 2, 3, 4, 5, 6, 7],
+    "Dorian": [1, 2, 3, 4, 5, 6, 7],
+    "Aeolian": [1, 2, 3, 4, 5, 6, 7],
+    "Mixolydian": [1, 2, 3, 4, 5, 6, 7],
+    "Lydian dominant": [1, 2, 3, 4, 5, 6, 7],
+    "half-whole diminished": [1, 2, 2, 3, 4, 5, 6, 7],
+    "whole-half diminished": [1, 2, 3, 4, 5, 6, 6, 7],
+    "altered": [1, 2, 2, 3, 5, 6, 7],
+    "phrygian dominant": [1, 2, 3, 4, 5, 6, 7],
+    "Locrian": [1, 2, 3, 4, 5, 6, 7],
+    "Locrian natural 2": [1, 2, 3, 4, 5, 6, 7],
+    "melodic minor": [1, 2, 3, 4, 5, 6, 7],
+    "Mixolydian b13": [1, 2, 3, 4, 5, 6, 7],
+}
+
+CHORD_ALIASES = {
+    "sus": "sus4",
+    "7sus": "7sus4",
+}
+
+DOMINANT_QUALITIES = {"7", "9", "13", "7b9", "7#9", "7#11", "7b13", "7sus4", "alt"}
+MAJOR_TONIC_QUALITIES = {"maj7", "maj9", "maj13", "6", ""}
+MINOR_TONIC_QUALITIES = {"m7", "m9", "m6", "m", "mMaj7"}
 MINOR_PRE_DOMINANT_QUALITIES = {"m7b5"}
 MAJOR_PRE_DOMINANT_QUALITIES = {"m7", "m9"}
 
@@ -97,18 +169,7 @@ MINOR_KEY_DEGREES = {
 }
 
 
-def read_grid(filename):
-    bars = []
-
-    with open(filename) as grid:
-        for line in grid:
-            for bar in line.split("|"):
-                chords = bar.split()
-
-                if chords:
-                    bars.append(chords)
-
-    return bars
+read_grid = read_grid_file
 
 
 def flatten_grid(bars):
@@ -120,41 +181,78 @@ def flatten_grid(bars):
     return chords
 
 
-def normalize_note(note):
-    return ENHARMONIC.get(note, note)
+def split_note(note):
+    match = re.match(r"^([A-G])([b#]{0,2})$", note)
+
+    if not match or match.group(2) not in ACCIDENTAL_OFFSETS:
+        raise ValueError(f"Invalid note name: {note}")
+
+    return match.group(1), match.group(2)
+
+
+def note_pitch_class(note):
+    letter, accidental = split_note(note)
+
+    return (NATURAL_NOTE_PITCH_CLASSES[letter] + ACCIDENTAL_OFFSETS[accidental]) % 12
+
+
+def accidental_for_offset(offset):
+    offset = ((offset + 6) % 12) - 6
+
+    for accidental, accidental_offset in ACCIDENTAL_OFFSETS.items():
+        if accidental_offset == offset:
+            return accidental
+
+    return "#" if offset > 0 else "b"
+
+
+def spell_pitch(root, interval, degree=None):
+    if degree is None:
+        notes = SHARP_NOTES if "#" in root and "b" not in root else FLAT_NOTES
+        return notes[(note_pitch_class(root) + interval) % 12]
+
+    root_letter, _ = split_note(root)
+    root_letter_index = LETTER_NAMES.index(root_letter)
+    target_letter = LETTER_NAMES[(root_letter_index + degree - 1) % len(LETTER_NAMES)]
+    target_pitch_class = (note_pitch_class(root) + interval) % 12
+    natural_pitch_class = NATURAL_NOTE_PITCH_CLASSES[target_letter]
+    accidental = accidental_for_offset(target_pitch_class - natural_pitch_class)
+
+    return f"{target_letter}{accidental}"
+
+
+def spell_intervals(root, intervals, degrees):
+    return [
+        spell_pitch(root, interval, degree)
+        for interval, degree in zip(intervals, degrees)
+    ]
 
 
 def parse_chord_symbol(symbol):
-    match = re.match(r"^([A-G](?:b|#)?)(.*)$", symbol)
+    chord, _, bass = symbol.partition("/")
+    match = re.match(r"^([A-G][b#]{0,2})(.*)$", chord)
     if not match:
         raise ValueError(f"Invalid chord symbol: {symbol}")
 
-    root = normalize_note(match.group(1))
-    quality = match.group(2)
+    root = match.group(1)
+    quality = CHORD_ALIASES.get(match.group(2), match.group(2))
 
     if quality not in CHORD_INTERVALS:
         raise ValueError(f"Unsupported chord quality: {quality}")
+    if bass:
+        note_pitch_class(bass)
 
     return root, quality
 
 
 def chord_tones(symbol):
     root, quality = parse_chord_symbol(symbol)
-    root_index = NOTES.index(root)
 
-    return [
-        NOTES[(root_index + interval) % 12]
-        for interval in CHORD_INTERVALS[quality]
-    ]
+    return spell_intervals(root, CHORD_INTERVALS[quality], CHORD_DEGREES[quality])
 
 
 def scale_notes(root, scale):
-    root_index = NOTES.index(root)
-
-    return [
-        NOTES[(root_index + interval) % 12]
-        for interval in SCALE_INTERVALS[scale]
-    ]
+    return spell_intervals(root, SCALE_INTERVALS[scale], SCALE_DEGREES[scale])
 
 
 def suggested_scales(symbol):
@@ -173,7 +271,9 @@ def primary_scale(symbol):
 
 
 def common_notes(notes_a, notes_b):
-    return [note for note in notes_a if note in notes_b]
+    pitch_classes_b = {note_pitch_class(note) for note in notes_b}
+
+    return [note for note in notes_a if note_pitch_class(note) in pitch_classes_b]
 
 
 def common_tones(chord_a, chord_b):
@@ -184,13 +284,11 @@ def common_tones(chord_a, chord_b):
 
 
 def transpose_note(note, semitones):
-    note_index = NOTES.index(note)
-
-    return NOTES[(note_index + semitones) % 12]
+    return FLAT_NOTES[(note_pitch_class(note) + semitones) % 12]
 
 
 def interval_between(root_a, root_b):
-    return (NOTES.index(root_b) - NOTES.index(root_a)) % 12
+    return (note_pitch_class(root_b) - note_pitch_class(root_a)) % 12
 
 
 def chord_quality(symbol):
@@ -262,79 +360,96 @@ def chord_function(symbol, key_root=None, key_type="major"):
 
 def important_tones(symbol):
     root, quality = parse_chord_symbol(symbol)
-    root_index = NOTES.index(root)
-    labels = [
-        ("3rd", 3 if quality in {"m7", "m9", "m6", "m", "m7b5", "dim7"} else 4),
-        ("7th", 9 if quality == "dim7" else 10),
-    ]
+    if quality in {"sus4", "7sus4"}:
+        labels = [("4th", 5, 4)]
 
-    if quality in {"maj7"}:
-        labels[1] = ("7th", 11)
-    if quality in {"6", "m6", "", "m"}:
+        if quality == "7sus4":
+            labels.append(("7th", 10, 7))
+    else:
+        labels = [
+            ("3rd", 3 if quality in {"m7", "m9", "m6", "m", "mMaj7", "m7b5", "dim7"} else 4, 3),
+            ("7th", 9 if quality == "dim7" else 10, 7),
+        ]
+
+    if quality in {"maj7", "maj9", "maj13", "mMaj7"}:
+        labels[1] = ("7th", 11, 7)
+    if quality in {"6", "m6", "", "m", "add9"}:
         labels = labels[:1]
-    if quality in {"9", "m9", "13"}:
-        labels.append(("9th", 14))
+    if quality in {"9", "m9", "13", "add9"}:
+        labels.append(("9th", 14, 9))
     if quality == "7b9":
-        labels.append(("b9", 13))
+        labels.append(("b9", 13, 9))
     if quality == "7#9":
-        labels.append(("#9", 15))
+        labels.append(("#9", 15, 9))
     if quality == "13":
-        labels.append(("13th", 21))
+        labels.append(("13th", 21, 13))
+    if quality == "7#11":
+        labels.append(("#11", 18, 11))
+    if quality == "7b13":
+        labels.append(("b13", 20, 13))
 
     return [
-        f"{label}: {NOTES[(root_index + interval) % 12]}"
-        for label, interval in labels
+        f"{label}: {spell_pitch(root, interval, degree)}"
+        for label, interval, degree in labels
     ]
 
 
 def important_tone_map(symbol):
     root, quality = parse_chord_symbol(symbol)
-    root_index = NOTES.index(root)
     intervals = {
-        "R": 0,
-        "3": 3 if quality in {"m7", "m9", "m6", "m", "m7b5", "dim7"} else 4,
-        "5": 6 if quality in {"m7b5", "dim7"} else 7,
+        "R": (0, 1),
+        "3": (3 if quality in {"m7", "m9", "m6", "m", "mMaj7", "m7b5", "dim7"} else 4, 3),
+        "5": (6 if quality in {"m7b5", "dim7"} else 7, 5),
     }
 
-    if quality in {"maj7"}:
-        intervals["7"] = 11
-    elif quality == "dim7":
-        intervals["7"] = 9
-    elif quality not in {"6", "m6", "", "m"}:
-        intervals["7"] = 10
+    if quality in {"sus4", "7sus4"}:
+        intervals["4"] = (5, 4)
+        intervals.pop("3")
 
-    if quality in {"9", "m9", "13"}:
-        intervals["9"] = 14
+    if quality in {"maj7", "maj9", "maj13", "mMaj7"}:
+        intervals["7"] = (11, 7)
+    elif quality == "dim7":
+        intervals["7"] = (9, 7)
+    elif quality not in {"6", "m6", "", "m", "sus4", "add9"}:
+        intervals["7"] = (10, 7)
+
+    if quality in {"9", "m9", "13", "maj9", "maj13", "add9"}:
+        intervals["9"] = (14, 9)
     if quality == "7b9":
-        intervals["b9"] = 13
+        intervals["b9"] = (13, 9)
     if quality == "7#9":
-        intervals["#9"] = 15
-    if quality == "13":
-        intervals["13"] = 21
+        intervals["#9"] = (15, 9)
+    if quality in {"13", "maj13"}:
+        intervals["13"] = (21, 13)
+    if quality == "7#11":
+        intervals["#11"] = (18, 11)
+    if quality == "7b13":
+        intervals["b13"] = (20, 13)
 
     return {
-        NOTES[(root_index + interval) % 12]: label
-        for label, interval in intervals.items()
+        spell_pitch(root, interval, degree): label
+        for label, (interval, degree) in intervals.items()
     }
 
 
 def scale_tone_map(root, scale):
-    root_index = NOTES.index(root)
-    intervals = {"R": 0}
+    intervals = {"R": (0, 1)}
 
     if scale in {"Lydian", "Lydian dominant"}:
-        intervals["#11"] = 6
+        intervals["#11"] = (6, 4)
     if scale in {"altered", "half-whole diminished"}:
-        intervals["b9"] = 1
-        intervals["#9"] = 3
+        intervals["b9"] = (1, 2)
+        intervals["#9"] = (3, 2)
     if scale == "altered":
-        intervals["b13"] = 8
+        intervals["b13"] = (8, 6)
     if scale == "phrygian dominant":
-        intervals["b9"] = 1
+        intervals["b9"] = (1, 2)
+    if scale == "Mixolydian b13":
+        intervals["b13"] = (8, 6)
 
     return {
-        NOTES[(root_index + interval) % 12]: label
-        for label, interval in intervals.items()
+        spell_pitch(root, interval, degree): label
+        for label, (interval, degree) in intervals.items()
     }
 
 
@@ -402,6 +517,34 @@ def target_label(root, target):
         return degree.lower()
 
     return degree
+
+
+def infer_reference_key(chords):
+    scores = {}
+
+    for chord in chords:
+        root = chord_root(chord)
+        quality = chord_quality(chord)
+
+        if is_major_tonic(chord):
+            scores[root] = scores.get(root, 0) + 4
+        elif is_minor_tonic(chord):
+            scores[root] = scores.get(root, 0) + 2
+
+    for first, second, third in zip(chords, chords[1:], chords[2:]):
+        if (
+            chord_quality(first) in MAJOR_PRE_DOMINANT_QUALITIES
+            and is_dominant(second)
+            and is_major_tonic(third)
+            and interval_between(chord_root(first), chord_root(second)) == 5
+            and interval_between(chord_root(second), chord_root(third)) == 5
+        ):
+            scores[chord_root(third)] = scores.get(chord_root(third), 0) + 6
+
+    if not scores:
+        return "C"
+
+    return max(scores, key=scores.get)
 
 
 def movement_scales(movement):
@@ -512,9 +655,11 @@ def detect_isolated_dominant_resolutions(chords, positions):
     return movements
 
 
-def detect_secondary_dominants(chords, positions=None):
+def detect_secondary_dominants(chords, positions=None, key_root=None):
     if positions is None:
         positions = chord_positions([[chord] for chord in chords])
+    if key_root is None:
+        key_root = infer_reference_key(chords)
 
     movements = []
 
@@ -527,13 +672,13 @@ def detect_secondary_dominants(chords, positions=None):
         if interval_between(chord_root(chord), chord_root(next_chord)) != 5:
             continue
 
-        degree = target_label("C", next_chord)
+        degree = target_label(key_root, next_chord)
 
         if not degree or degree == "I":
             continue
 
         label = f"V/{degree}"
-        explanation = f"{chord} tonicizes {next_chord}; in C as a reference key this functions like {label}."
+        explanation = f"{chord} tonicizes {next_chord}; in {key_root} as the inferred reference key this functions like {label}."
         movements.append(make_movement(
             "secondary dominant",
             [chord, next_chord],
@@ -788,6 +933,7 @@ def detect_harmonic_movements(chords, bars=None):
         bars = [[chord] for chord in chords]
 
     positions = chord_positions(bars)
+    reference_key = infer_reference_key(chords)
     movements = []
     ii_v_i_movements = detect_ii_v_i_with_positions(chords, positions)
     turnaround_movements = detect_turnarounds(chords, positions)
@@ -817,7 +963,7 @@ def detect_harmonic_movements(chords, bars=None):
 
     secondary_movements = []
 
-    for movement in detect_secondary_dominants(chords, positions):
+    for movement in detect_secondary_dominants(chords, positions, reference_key):
         if not is_inside_longer_functional_movement(movement, longer_movements):
             movements.append(movement)
             secondary_movements.append(movement)
@@ -1157,9 +1303,10 @@ def parse_scale_suggestion(suggestion):
 
 def scale_filename(suggestion):
     root, scale = parse_scale_suggestion(suggestion)
+    clean_root = root.replace("#", "sharp")
     clean_scale = scale.lower().replace("-", "_").replace(" ", "_")
 
-    return f"{root}_{clean_scale}.md"
+    return f"{clean_root}_{clean_scale}.md"
 
 
 def scale_file_stem(suggestion):

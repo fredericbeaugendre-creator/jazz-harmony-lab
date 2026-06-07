@@ -1,4 +1,5 @@
 import os
+import re
 
 GUITAR_STRINGS = ["E", "B", "G", "D", "A", "E"]
 BASS_4_STRINGS = ["G", "D", "A", "E"]
@@ -32,6 +33,38 @@ INACTIVE_WHITE_KEY_FILL = "#dbeafe"
 ACTIVE_BLACK_KEY_FILL = "#1e3a5f"
 INACTIVE_BLACK_KEY_FILL = "#111827"
 
+NOTE_PITCH_CLASSES = {
+    "C": 0,
+    "B#": 0,
+    "C#": 1,
+    "Db": 1,
+    "D": 2,
+    "D#": 3,
+    "Eb": 3,
+    "E": 4,
+    "Fb": 4,
+    "E#": 5,
+    "F": 5,
+    "F#": 6,
+    "Gb": 6,
+    "G": 7,
+    "G#": 8,
+    "Ab": 8,
+    "A": 9,
+    "A#": 10,
+    "Bb": 10,
+    "B": 11,
+    "Cb": 11,
+}
+NATURAL_NOTE_PITCH_CLASSES = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
+ACCIDENTAL_OFFSETS = {
+    "bb": -2,
+    "b": -1,
+    "": 0,
+    "#": 1,
+    "##": 2,
+}
+
 
 def svg_escape(text):
     return (
@@ -44,6 +77,36 @@ def svg_escape(text):
 
 def role_color(role):
     return ROLE_COLORS.get(role, ROLE_COLORS["o"])
+
+
+def note_pitch_class(note):
+    if note in NOTE_PITCH_CLASSES:
+        return NOTE_PITCH_CLASSES[note]
+
+    match = re.match(r"^([A-G])([b#]{0,2})$", note)
+
+    if not match or match.group(2) not in ACCIDENTAL_OFFSETS:
+        raise ValueError(f"Invalid note name: {note}")
+
+    letter, accidental = match.groups()
+
+    return (NATURAL_NOTE_PITCH_CLASSES[letter] + ACCIDENTAL_OFFSETS[accidental]) % 12
+
+
+def contains_pitch(notes, note):
+    pitch_class = note_pitch_class(note)
+
+    return any(note_pitch_class(item) == pitch_class for item in notes)
+
+
+def pitch_role(note, note_roles):
+    pitch_class = note_pitch_class(note)
+
+    for role_note, role in note_roles.items():
+        if note_pitch_class(role_note) == pitch_class:
+            return role
+
+    return "o"
 
 
 def write_file(path, content):
@@ -107,11 +170,11 @@ def fretted_instrument_svg(
         for fret in range(fret_count + 1):
             note = transpose_note(string, fret)
 
-            if note not in scale_notes:
+            if not contains_pitch(scale_notes, note):
                 continue
 
             cx = left + fret * fret_gap if fret == 0 else left + (fret - 0.5) * fret_gap
-            role = note_roles.get(note, "o")
+            role = pitch_role(note, note_roles)
             fill = role_color(role)
             stroke = "#334155" if role == "o" else "#0f172a"
             text = note if role == "o" else role
@@ -219,8 +282,8 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
 
     for index, note in enumerate(white_notes):
         x = left + index * white_width
-        active = note in scale_notes
-        role = note_roles.get(note, "o")
+        active = contains_pitch(scale_notes, note)
+        role = pitch_role(note, note_roles)
         fill = "#ffffff" if active else INACTIVE_WHITE_KEY_FILL
         stroke = "#2563eb" if active else "#94a3b8"
 
@@ -257,8 +320,8 @@ def piano_svg(root, scale_name, scale_notes, note_roles):
 
         for note, white_index in BLACK_KEYS.items():
             x = offset + (white_index + 1) * white_width - black_width / 2
-            active = note in scale_notes
-            role = note_roles.get(note, "o")
+            active = contains_pitch(scale_notes, note)
+            role = pitch_role(note, note_roles)
 
             fill = ACTIVE_BLACK_KEY_FILL if active else INACTIVE_BLACK_KEY_FILL
             elements.append(

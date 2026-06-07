@@ -2,9 +2,9 @@
 
 ## Scale
 
-- Notes: E, F, Ab, A, B, C, D, E
+- Notes: E, F, G#, A, B, C, D, E
 - Chord context: E7b9
-- Important tones: 3: Ab, 5: B, 7: D, R: E, b9: F
+- Important tones: 5: B, 7: D, R: E, b9: F, 3: G#
 
 ### Common tones with previous scales
 
@@ -43,7 +43,7 @@
 
 ## Piano notes
 
-- Scale notes: E, F, Ab, A, B, C, D, E
+- Scale notes: E, F, G#, A, B, C, D, E
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
-- Target tones: 3: Ab, 5: B, 7: D, R: E, b9: F
+- Target tones: 5: B, 7: D, R: E, b9: F, 3: G#

@@ -2,17 +2,17 @@
 
 ## Scale
 
-- Notes: D, Eb, F, Gb, Ab, Bb, C, D
+- Notes: D, Eb, E#, F#, Ab, Bb, C, D
 - Chord context: D7#9
-- Important tones: b13: Bb, 7: C, R: D, b9: Eb, #9: F, 3: Gb
+- Important tones: b13: Bb, 7: C, R: D, #9: E#, b9: Eb, 3: F#
 
 ### Common tones with previous scales
 
-- A Dorian: D, Gb, C
+- A Dorian: D, F#, C
 
 ### Common tones with next scales
 
-- G Ionian: D, Gb, C
+- G Ionian: D, F#, C
 
 ## Resolution ideas
 
@@ -40,7 +40,7 @@
 
 ## Piano notes
 
-- Scale notes: D, Eb, F, Gb, Ab, Bb, C, D
+- Scale notes: D, Eb, E#, F#, Ab, Bb, C, D
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
-- Target tones: b13: Bb, 7: C, R: D, b9: Eb, #9: F, 3: Gb
+- Target tones: b13: Bb, 7: C, R: D, #9: E#, b9: Eb, 3: F#

@@ -2,7 +2,7 @@
 
 ## Scale
 
-- Notes: B, Db, D, E, F, G, A, B
+- Notes: B, C#, D, E, F, G, A, B
 - Chord context: Bm7b5
 - Important tones: 7: A, R: B, 3: D, 5: F
 
@@ -14,7 +14,7 @@
 ### Common tones with next scales
 
 - E altered: D, E, F, G
-- E half-whole diminished: B, Db, D, E, F, G
+- E half-whole diminished: B, C#, D, E, F, G
 - E phrygian dominant: B, D, E, F, A
 
 ## Resolution ideas
@@ -43,7 +43,7 @@
 
 ## Piano notes
 
-- Scale notes: B, Db, D, E, F, G, A, B
+- Scale notes: B, C#, D, E, F, G, A, B
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
 - Target tones: 7: A, R: B, 3: D, 5: F

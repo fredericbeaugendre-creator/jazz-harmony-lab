@@ -2,23 +2,23 @@
 
 ## Scale
 
-- Notes: A, B, Db, D, E, Gb, G, A
+- Notes: A, B, C#, D, E, F#, G, A
 - Chord context: A7, A7, A7
-- Important tones: R: A, 3: Db, 5: E, 7: G
+- Important tones: R: A, 3: C#, 5: E, 7: G
 
 ### Common tones with previous scales
 
-- A Lydian dominant: A, B, Db, E, Gb, G
-- A Mixolydian: A, B, Db, D, E, Gb, G
-- E Aeolian: A, B, D, E, Gb, G
-- E Dorian: A, B, Db, D, E, Gb, G
+- A Lydian dominant: A, B, C#, E, F#, G
+- A Mixolydian: A, B, C#, D, E, F#, G
+- E Aeolian: A, B, D, E, F#, G
+- E Dorian: A, B, C#, D, E, F#, G
 
 ### Common tones with next scales
 
 - A Aeolian: A, B, D, E, G
-- A Dorian: A, B, D, E, Gb, G
-- A Lydian dominant: A, B, Db, E, Gb, G
-- A Mixolydian: A, B, Db, D, E, Gb, G
+- A Dorian: A, B, D, E, F#, G
+- A Lydian dominant: A, B, C#, E, F#, G
+- A Mixolydian: A, B, C#, D, E, F#, G
 
 ## Resolution ideas
 
@@ -46,7 +46,7 @@
 
 ## Piano notes
 
-- Scale notes: A, B, Db, D, E, Gb, G, A
+- Scale notes: A, B, C#, D, E, F#, G, A
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
-- Target tones: R: A, 3: Db, 5: E, 7: G
+- Target tones: R: A, 3: C#, 5: E, 7: G

@@ -111,9 +111,25 @@ def musicxml_degrees(harmony):
         if degree_type not in {"add", "alter"}:
             continue
 
-        suffix += f"{accidental_from_alter(alter)}{value}"
+        accidental = accidental_from_alter(alter)
+
+        if degree_type == "add" and not accidental:
+            suffix += f"add{accidental}{value}"
+        else:
+            suffix += f"{accidental}{value}"
 
     return suffix
+
+
+def normalize_musicxml_quality(kind, degrees):
+    quality = kind + degrees
+
+    if quality == "7add9":
+        return "9"
+    if quality == "7add13":
+        return "13"
+
+    return quality
 
 
 def musicxml_chord_symbol(harmony):
@@ -122,7 +138,11 @@ def musicxml_chord_symbol(harmony):
     if not root:
         return ""
 
-    return root + musicxml_kind(harmony) + musicxml_degrees(harmony) + musicxml_bass(harmony)
+    kind = musicxml_kind(harmony)
+    degrees = musicxml_degrees(harmony)
+    quality = normalize_musicxml_quality(kind, degrees)
+
+    return root + quality + musicxml_bass(harmony)
 
 
 def strip_namespace(tree):

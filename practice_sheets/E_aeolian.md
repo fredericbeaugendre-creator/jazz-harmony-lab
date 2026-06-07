@@ -2,22 +2,22 @@
 
 ## Scale
 
-- Notes: E, Gb, G, A, B, C, D, E
+- Notes: E, F#, G, A, B, C, D, E
 - Chord context: Em7, Em7
 - Important tones: 5: B, 7: D, R: E, 3: G
 
 ### Common tones with previous scales
 
 - B altered: G, A, B, C, D
-- B half-whole diminished: Gb, A, B, C, D
-- B phrygian dominant: E, Gb, G, A, B, C
-- G Ionian: E, Gb, G, A, B, C, D
-- G Lydian: E, Gb, G, A, B, D
+- B half-whole diminished: F#, A, B, C, D
+- B phrygian dominant: E, F#, G, A, B, C
+- G Ionian: E, F#, G, A, B, C, D
+- G Lydian: E, F#, G, A, B, D
 
 ### Common tones with next scales
 
-- A Lydian dominant: E, Gb, G, A, B
-- A Mixolydian: E, Gb, G, A, B, D
+- A Lydian dominant: E, F#, G, A, B
+- A Mixolydian: E, F#, G, A, B, D
 
 ## Resolution ideas
 
@@ -45,7 +45,7 @@
 
 ## Piano notes
 
-- Scale notes: E, Gb, G, A, B, C, D, E
+- Scale notes: E, F#, G, A, B, C, D, E
 - Suggested RH fingering: 1-2-3-1-2-3-4-5
 - Fingering is a starting point, not a rule. Adjust it for tempo, line direction, and hand shape.
 - Target tones: 5: B, 7: D, R: E, 3: G

@@ -15,7 +15,9 @@ A small Python tool to analyse jazz chord progressions.
 
 ## Supported chord symbols
 
-maj7, m7, 7, m7b5, dim7, 6, m6, 9, m9, 13, 7b9, 7#9
+maj7, maj9, maj13, m, m7, m9, mMaj7, 7, 9, 13, 7b9, 7#9, 7#11, 7b13, alt, m7b5, dim7, 6, m6, add9, sus4, 7sus4
+
+Slash chords such as `Cmaj7/E` are accepted; analysis uses the chord root while preserving the imported symbol in the chart.
 
 ## Example
 
@@ -38,7 +40,7 @@ To import a MusicXML chord chart instead:
 python3 main.py --musicxml examples/song.musicxml
 ```
 
-MusicXML import currently extracts `<harmony>` chord symbols measure by measure.
+MusicXML import currently extracts `<harmony>` chord symbols measure by measure, including bass notes and common added or altered degrees.
 This is the first importer path for iReal Pro workflows, because iReal Pro can export chord charts as MusicXML.
 Direct `irealb://` URL parsing is planned but not implemented yet.
 
