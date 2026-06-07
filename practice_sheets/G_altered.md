@@ -24,6 +24,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/G_altered.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/G_altered.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/G_altered.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/G_altered.svg)

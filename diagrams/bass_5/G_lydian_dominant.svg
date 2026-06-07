@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="76" y="34" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">G Lydian dominant - 5-string Bass</text>
+<text x="76" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Frets 0-12. Important tones use labels; other scale tones are small note names.</text>
+<rect x="76" y="62" width="868" height="164" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.2"/>
+<line x1="76.0" y1="62" x2="76.0" y2="226" stroke="#7c2d12" stroke-width="5"/>
+<line x1="148.3" y1="62" x2="148.3" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="112.2" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">1</text>
+<line x1="220.7" y1="62" x2="220.7" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="184.5" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">2</text>
+<line x1="293.0" y1="62" x2="293.0" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="256.8" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">3</text>
+<line x1="365.3" y1="62" x2="365.3" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="329.2" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">4</text>
+<line x1="437.7" y1="62" x2="437.7" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="401.5" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">5</text>
+<line x1="510.0" y1="62" x2="510.0" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="473.8" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">6</text>
+<line x1="582.3" y1="62" x2="582.3" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="546.2" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">7</text>
+<line x1="654.7" y1="62" x2="654.7" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="618.5" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">8</text>
+<line x1="727.0" y1="62" x2="727.0" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="690.8" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">9</text>
+<line x1="799.3" y1="62" x2="799.3" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="763.2" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">10</text>
+<line x1="871.7" y1="62" x2="871.7" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="835.5" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">11</text>
+<line x1="944.0" y1="62" x2="944.0" y2="226" stroke="#9a3412" stroke-width="1.4"/>
+<text x="907.8" y="254" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">12</text>
+<line x1="76" y1="76.0" x2="944" y2="76.0" stroke="#334155" stroke-width="1.2"/>
+<text x="52" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">G</text>
+<circle cx="76.0" cy="76.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="76.0" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<circle cx="184.5" cy="76.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="184.5" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<circle cx="329.2" cy="76.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="329.2" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="473.8" cy="76.0" r="15" fill="#ca8a04" stroke="#0f172a" stroke-width="1.2"/>
+<text x="473.8" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#11</text>
+<circle cx="546.2" cy="76.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="546.2" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<circle cx="690.8" cy="76.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="690.8" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<circle cx="763.2" cy="76.0" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1.2"/>
+<text x="763.2" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">7</text>
+<circle cx="907.8" cy="76.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="907.8" y="80.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<line x1="76" y1="110.0" x2="944" y2="110.0" stroke="#334155" stroke-width="1.4"/>
+<text x="52" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">D</text>
+<circle cx="76.0" cy="110.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="76.0" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<circle cx="184.5" cy="110.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="184.5" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<circle cx="256.8" cy="110.0" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1.2"/>
+<text x="256.8" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">7</text>
+<circle cx="401.5" cy="110.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="401.5" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<circle cx="546.2" cy="110.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="546.2" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<circle cx="690.8" cy="110.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="690.8" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="835.5" cy="110.0" r="15" fill="#ca8a04" stroke="#0f172a" stroke-width="1.2"/>
+<text x="835.5" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#11</text>
+<circle cx="907.8" cy="110.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="907.8" y="114.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<line x1="76" y1="144.0" x2="944" y2="144.0" stroke="#334155" stroke-width="1.7"/>
+<text x="52" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">A</text>
+<circle cx="76.0" cy="144.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="76.0" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<circle cx="184.5" cy="144.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="184.5" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="329.2" cy="144.0" r="15" fill="#ca8a04" stroke="#0f172a" stroke-width="1.2"/>
+<text x="329.2" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#11</text>
+<circle cx="401.5" cy="144.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="401.5" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<circle cx="546.2" cy="144.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="546.2" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<circle cx="618.5" cy="144.0" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1.2"/>
+<text x="618.5" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">7</text>
+<circle cx="763.2" cy="144.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="763.2" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<circle cx="907.8" cy="144.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="907.8" y="148.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<line x1="76" y1="178.0" x2="944" y2="178.0" stroke="#334155" stroke-width="1.9"/>
+<text x="52" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">E</text>
+<circle cx="76.0" cy="178.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="76.0" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<circle cx="112.2" cy="178.0" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1.2"/>
+<text x="112.2" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">7</text>
+<circle cx="256.8" cy="178.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="256.8" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<circle cx="401.5" cy="178.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="401.5" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<circle cx="546.2" cy="178.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="546.2" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="690.8" cy="178.0" r="15" fill="#ca8a04" stroke="#0f172a" stroke-width="1.2"/>
+<text x="690.8" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#11</text>
+<circle cx="763.2" cy="178.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="763.2" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<circle cx="907.8" cy="178.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="907.8" y="182.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<line x1="76" y1="212.0" x2="944" y2="212.0" stroke="#334155" stroke-width="2.2"/>
+<text x="52" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">B</text>
+<circle cx="76.0" cy="212.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="76.0" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="184.5" cy="212.0" r="15" fill="#ca8a04" stroke="#0f172a" stroke-width="1.2"/>
+<text x="184.5" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#11</text>
+<circle cx="256.8" cy="212.0" r="15" fill="#64748b" stroke="#0f172a" stroke-width="1.2"/>
+<text x="256.8" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">5</text>
+<circle cx="401.5" cy="212.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="401.5" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">E</text>
+<circle cx="473.8" cy="212.0" r="15" fill="#9333ea" stroke="#0f172a" stroke-width="1.2"/>
+<text x="473.8" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">7</text>
+<circle cx="618.5" cy="212.0" r="15" fill="#2563eb" stroke="#0f172a" stroke-width="1.2"/>
+<text x="618.5" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
+<circle cx="763.2" cy="212.0" r="11" fill="#f8fafc" stroke="#334155" stroke-width="1.2"/>
+<text x="763.2" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">A</text>
+<circle cx="907.8" cy="212.0" r="15" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+<text x="907.8" y="216.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">3</text>
+<circle cx="76" cy="398" r="9" fill="#2563eb"/>
+<text x="76" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">R</text>
+<text x="90" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">root</text>
+<circle cx="168" cy="398" r="9" fill="#16a34a"/>
+<text x="168" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">3</text>
+<text x="182" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">third</text>
+<circle cx="260" cy="398" r="9" fill="#64748b"/>
+<text x="260" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">5</text>
+<text x="274" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">fifth</text>
+<circle cx="352" cy="398" r="9" fill="#9333ea"/>
+<text x="352" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">7</text>
+<text x="366" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">seventh</text>
+<circle cx="444" cy="398" r="9" fill="#dc2626"/>
+<text x="444" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b9</text>
+<text x="458" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat nine</text>
+<circle cx="536" cy="398" r="9" fill="#ea580c"/>
+<text x="536" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#9</text>
+<text x="550" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp nine</text>
+<circle cx="628" cy="398" r="9" fill="#ca8a04"/>
+<text x="628" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#11</text>
+<text x="642" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp eleven</text>
+<circle cx="720" cy="398" r="9" fill="#be123c"/>
+<text x="720" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b13</text>
+<text x="734" y="402" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat thirteen</text>
+</svg>

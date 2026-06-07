@@ -31,6 +31,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/A_dorian.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/A_dorian.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/A_dorian.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/A_dorian.svg)

@@ -1,6 +1,8 @@
 import os
 
 GUITAR_STRINGS = ["E", "B", "G", "D", "A", "E"]
+BASS_4_STRINGS = ["G", "D", "A", "E"]
+BASS_5_STRINGS = ["G", "D", "A", "E", "B"]
 WHITE_KEYS = ["C", "D", "E", "F", "G", "A", "B"]
 BLACK_KEYS = {
     "Db": 0,
@@ -51,16 +53,25 @@ def write_file(path, content):
         svg.write(content)
 
 
-def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
+def fretted_instrument_svg(
+    instrument_name,
+    tuning,
+    root,
+    scale_name,
+    scale_notes,
+    note_roles,
+    transpose_note,
+    fret_count=12,
+):
     width = 980
-    height = 360
+    height = 260 + 34 * len(tuning)
     left = 76
     right = 36
     top = 76
     string_gap = 34
-    fret_gap = (width - left - right) / 12
-    board_height = string_gap * 5
-    title = f"{root} {scale_name} - Guitar"
+    fret_gap = (width - left - right) / fret_count
+    board_height = string_gap * (len(tuning) - 1)
+    title = f"{root} {scale_name} - {instrument_name}"
     elements = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#f8fafc"/>',
@@ -69,7 +80,7 @@ def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
         f'<rect x="{left}" y="{top - 14}" width="{width - left - right}" height="{board_height + 28}" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.2"/>',
     ]
 
-    for fret in range(13):
+    for fret in range(fret_count + 1):
         x = left + fret * fret_gap
         stroke_width = 5 if fret == 0 else 1.4
         color = "#7c2d12" if fret == 0 else "#9a3412"
@@ -83,7 +94,7 @@ def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
                 f'<text x="{label_x:.1f}" y="{top + board_height + 42}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#64748b">{fret}</text>'
             )
 
-    for index, string in enumerate(GUITAR_STRINGS):
+    for index, string in enumerate(tuning):
         y = top + index * string_gap
         stroke_width = 1.2 + index * 0.25
         elements.append(
@@ -93,7 +104,7 @@ def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
             f'<text x="{left - 24}" y="{y + 4:.1f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">{string}</text>'
         )
 
-        for fret in range(13):
+        for fret in range(fret_count + 1):
             note = transpose_note(string, fret)
 
             if note not in scale_notes:
@@ -137,8 +148,44 @@ def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
     return "\n".join(elements) + "\n"
 
 
+def guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note):
+    return fretted_instrument_svg(
+        "Guitar",
+        GUITAR_STRINGS,
+        root,
+        scale_name,
+        scale_notes,
+        note_roles,
+        transpose_note,
+    )
+
+
 def write_guitar_svg(path, root, scale_name, scale_notes, note_roles, transpose_note):
     write_file(path, guitar_svg(root, scale_name, scale_notes, note_roles, transpose_note))
+
+
+def write_bass_4_svg(path, root, scale_name, scale_notes, note_roles, transpose_note):
+    write_file(path, fretted_instrument_svg(
+        "4-string Bass",
+        BASS_4_STRINGS,
+        root,
+        scale_name,
+        scale_notes,
+        note_roles,
+        transpose_note,
+    ))
+
+
+def write_bass_5_svg(path, root, scale_name, scale_notes, note_roles, transpose_note):
+    write_file(path, fretted_instrument_svg(
+        "5-string Bass",
+        BASS_5_STRINGS,
+        root,
+        scale_name,
+        scale_notes,
+        note_roles,
+        transpose_note,
+    ))
 
 
 def piano_fingering(scale_notes):
@@ -256,19 +303,38 @@ def write_piano_svg(path, root, scale_name, scale_notes, note_roles):
     write_file(path, piano_svg(root, scale_name, scale_notes, note_roles))
 
 
-def diagram_markdown(guitar_path, piano_path):
-    return [
+def diagram_markdown(guitar_path, piano_path, bass_4_path=None, bass_5_path=None):
+    lines = [
         "## Diagrams",
         "",
         "### Guitar fretboard",
         "",
         f"![Guitar fretboard]({guitar_path})",
         "",
+    ]
+
+    if bass_4_path and bass_5_path:
+        lines.extend([
+            "## Electric Bass",
+            "",
+            "### 4-string bass",
+            "",
+            f"![4-string bass fretboard]({bass_4_path})",
+            "",
+            "### 5-string bass",
+            "",
+            f"![5-string bass fretboard]({bass_5_path})",
+            "",
+        ])
+
+    lines.extend([
         "### Piano keyboard",
         "",
         f"![Piano keyboard]({piano_path})",
         "",
-    ]
+    ])
+
+    return lines
 
 
 def piano_view(scale_notes, target_tones):

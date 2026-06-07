@@ -26,6 +26,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/Eb_mixolydian.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/Eb_mixolydian.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/Eb_mixolydian.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/Eb_mixolydian.svg)

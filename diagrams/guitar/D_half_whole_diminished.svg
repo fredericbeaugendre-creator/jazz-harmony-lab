@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="464" viewBox="0 0 980 464">
 <rect width="100%" height="100%" fill="#f8fafc"/>
 <text x="76" y="34" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">D half-whole diminished - Guitar</text>
 <text x="76" y="56" font-family="Arial, sans-serif" font-size="13" fill="#475569">Frets 0-12. Important tones use labels; other scale tones are small note names.</text>
@@ -142,28 +142,28 @@
 <text x="763.2" y="250.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R</text>
 <circle cx="835.5" cy="246.0" r="15" fill="#dc2626" stroke="#0f172a" stroke-width="1.2"/>
 <text x="835.5" y="250.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">b9</text>
-<circle cx="76" cy="328" r="9" fill="#2563eb"/>
-<text x="76" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">R</text>
-<text x="90" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">root</text>
-<circle cx="168" cy="328" r="9" fill="#16a34a"/>
-<text x="168" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">3</text>
-<text x="182" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">third</text>
-<circle cx="260" cy="328" r="9" fill="#64748b"/>
-<text x="260" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">5</text>
-<text x="274" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">fifth</text>
-<circle cx="352" cy="328" r="9" fill="#9333ea"/>
-<text x="352" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">7</text>
-<text x="366" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">seventh</text>
-<circle cx="444" cy="328" r="9" fill="#dc2626"/>
-<text x="444" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b9</text>
-<text x="458" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat nine</text>
-<circle cx="536" cy="328" r="9" fill="#ea580c"/>
-<text x="536" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#9</text>
-<text x="550" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp nine</text>
-<circle cx="628" cy="328" r="9" fill="#ca8a04"/>
-<text x="628" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#11</text>
-<text x="642" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp eleven</text>
-<circle cx="720" cy="328" r="9" fill="#be123c"/>
-<text x="720" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b13</text>
-<text x="734" y="332" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat thirteen</text>
+<circle cx="76" cy="432" r="9" fill="#2563eb"/>
+<text x="76" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">R</text>
+<text x="90" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">root</text>
+<circle cx="168" cy="432" r="9" fill="#16a34a"/>
+<text x="168" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">3</text>
+<text x="182" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">third</text>
+<circle cx="260" cy="432" r="9" fill="#64748b"/>
+<text x="260" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">5</text>
+<text x="274" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">fifth</text>
+<circle cx="352" cy="432" r="9" fill="#9333ea"/>
+<text x="352" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">7</text>
+<text x="366" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">seventh</text>
+<circle cx="444" cy="432" r="9" fill="#dc2626"/>
+<text x="444" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b9</text>
+<text x="458" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat nine</text>
+<circle cx="536" cy="432" r="9" fill="#ea580c"/>
+<text x="536" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#9</text>
+<text x="550" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp nine</text>
+<circle cx="628" cy="432" r="9" fill="#ca8a04"/>
+<text x="628" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">#11</text>
+<text x="642" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">sharp eleven</text>
+<circle cx="720" cy="432" r="9" fill="#be123c"/>
+<text x="720" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#ffffff">b13</text>
+<text x="734" y="436" font-family="Arial, sans-serif" font-size="11" fill="#475569">flat thirteen</text>
 </svg>

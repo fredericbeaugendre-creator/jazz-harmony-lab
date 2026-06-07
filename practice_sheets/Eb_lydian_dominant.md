@@ -26,6 +26,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/Eb_lydian_dominant.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/Eb_lydian_dominant.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/Eb_lydian_dominant.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/Eb_lydian_dominant.svg)

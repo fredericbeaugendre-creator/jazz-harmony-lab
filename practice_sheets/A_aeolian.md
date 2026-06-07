@@ -28,6 +28,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/A_aeolian.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/A_aeolian.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/A_aeolian.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/A_aeolian.svg)

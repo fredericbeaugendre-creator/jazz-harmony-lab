@@ -27,6 +27,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/E_half_whole_diminished.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/E_half_whole_diminished.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/E_half_whole_diminished.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/E_half_whole_diminished.svg)

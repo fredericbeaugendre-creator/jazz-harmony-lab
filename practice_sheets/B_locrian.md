@@ -28,6 +28,16 @@
 
 ![Guitar fretboard](../diagrams/guitar/B_locrian.svg)
 
+## Electric Bass
+
+### 4-string bass
+
+![4-string bass fretboard](../diagrams/bass_4/B_locrian.svg)
+
+### 5-string bass
+
+![5-string bass fretboard](../diagrams/bass_5/B_locrian.svg)
+
 ### Piano keyboard
 
 ![Piano keyboard](../diagrams/piano/B_locrian.svg)
